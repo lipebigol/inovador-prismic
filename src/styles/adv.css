@@ -1,0 +1,36 @@
+.body-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.body-content h2 {
+    padding: .4rem 0;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.body-content p {
+    padding: .4rem 0;
+    font-size: 1.2rem;
+}
+
+.body-content img {
+    padding: .4rem 0;
+    margin: auto;
+}
+
+.body-content a {
+    color: #3b82f6;
+}
+
+.body-content ul {
+    padding: .4rem 0;
+}
+
+.body-content ol {
+    padding: .4rem 0;
+}
+
+.body-content li {
+    list-style-position: inside;
+}
