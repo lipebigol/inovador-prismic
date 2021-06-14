@@ -15,7 +15,7 @@ export default function Adv({ adv }) {
             <Head>
                 <title>{adv.title}</title>
             </Head>
-            <Flex direction="column" maxW="700px" mx="auto" my="6" px={[4, 4, 0]}>
+            <Flex direction="column" maxW="700px" mx="auto" my="6" px={[4, 4, 0]} >
                 <VStack align="stretch" spacing="2">
                     <Text fontSize="sm" letterSpacing="widest" align="center">ADVERTORIAL</Text>
                     <Heading>{adv.title}</Heading>
@@ -38,7 +38,7 @@ export default function Adv({ adv }) {
                 </Flex>
 
                 {adv.banner.map(bannerInfo => (
-                    <Link href={bannerInfo.bannerLink}>
+                    <Link href={bannerInfo.bannerLink} >
                         <a>
 
                             <Flex p={["4", "6"]} bgColor="gray.200" align="center" direction="column" mt="8">
@@ -65,7 +65,7 @@ export default function Adv({ adv }) {
 
             </Flex>
 
-            <Flex direction="column" bgColor="gray.300" py="8">
+            <Flex direction="column" bgColor="gray.300" py="8" >
                 <Box maxW="700px" mx="auto" fontSize="xs" textAlign="center">
                     <VStack spacing="4">
                         <Text>© Copyright 2021 Portal Inovador.Club</Text>
