@@ -9,17 +9,7 @@ import { RichText } from "prismic-dom"
 export default function Home({ advs }) {
   return (
     <div>
-      <Header advs={advs} />
-
-      {advs.map(adv => {
-        return (
-          <Flex direction="column" key={adv.slug}>
-            <Heading>{adv.title}</Heading>
-            <Text>{adv.description}</Text>
-            {adv.body}
-          </Flex>
-        )
-      })}
+      Em Breve...
     </div>
 
   )

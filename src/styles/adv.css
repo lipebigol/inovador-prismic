@@ -34,3 +34,7 @@
 .body-content li {
     list-style-position: inside;
 }
+
+.footer p {
+    padding: .4rem 0;
+}

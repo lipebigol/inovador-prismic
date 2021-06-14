@@ -1,10 +1,11 @@
 import { getPrismicClient } from "../../../prismic"
 import Prismic from '@prismicio/client'
 import { RichText } from "prismic-dom";
-import { Flex, Heading, Text, Icon, VStack, Image } from "@chakra-ui/react";
+import { Flex, Heading, Text, Icon, VStack, Image, HStack, Box } from "@chakra-ui/react";
 import { FaStar, FaStarHalfAlt } from 'react-icons/fa'
 import { AiFillCheckCircle } from 'react-icons/ai'
 import Head from 'next/head'
+import Link from 'next/link'
 
 
 export default function Adv({ adv }) {
@@ -36,24 +37,51 @@ export default function Adv({ adv }) {
                     <Text fontSize="sm" ml="4">Atualização: <Text as="b" color="red.500">Descontos de até 60% ainda disponíveis.</Text> Promoção válida enquanto durarem as unidades que os fabricantes reservaram para a nossa matéria.</Text>
                 </Flex>
 
-                <Flex p={["4", "6"]} bgColor="gray.200" align="center" direction="column" mt="8">
-                    <VStack spacing="6">
+                {adv.banner.map(bannerInfo => (
+                    <Link href={bannerInfo.bannerLink}>
+                        <a>
 
-                        <Heading fontSize={["lg", "xl", "2xl"]} ml="4" textAlign="center">Atualização:Descontos de até 60% ainda disponíveis. Promoção válida enquanto durarem as unidades que os fabricantes reservaram para a nossa matéria.</Heading>
-                        <Text fontSize="lg" textColor="red.500" as="b">Oportunidade válida.</Text>
-                        <Image
-                            boxSize="100%"
-                            objectFit="contain"
-                            src="https://noticias.inovador.club/_next/image?url=%2Fgreen-mask%2Fbanner.png&w=750&q=75"
-                        />
-                        <Text fontSize={["sm", "md"]}>Atenção: Restam poucas Unidades! Tenha vantagem com o nosso link exclusivo e ganhe até 60% de desconto e parcelamento em até 12x clicando no botão abaixo:</Text>
-                        <Image
-                            boxSize={["90%", "65%"]}
-                            objectFit="contain"
-                            src="https://noticias.inovador.club/_next/image?url=%2Fbotao.png&w=640&q=75"
-                        />
+                            <Flex p={["4", "6"]} bgColor="gray.200" align="center" direction="column" mt="8">
+                                <VStack spacing="6">
+
+                                    <Heading fontSize={["lg", "xl", "2xl"]} ml="4" textAlign="center">{bannerInfo.bannerTitle}</Heading>
+                                    <Text fontSize="lg" textColor="red.500" as="b">Oportunidade válida.</Text>
+                                    <Image
+                                        boxSize="100%"
+                                        objectFit="contain"
+                                        src={bannerInfo.bannerImage}
+                                    />
+                                    <Text fontSize={["sm", "md"]}>Atenção: Restam poucas Unidades! Tenha vantagem com o nosso link exclusivo e ganhe até 60% de desconto e parcelamento em até 12x clicando no botão abaixo:</Text>
+                                    <Image
+                                        objectFit="contain"
+                                        src="/botao.png"
+                                    />
+
+                                </VStack>
+                            </Flex>
+                        </a>
+                    </Link>
+                ))}
+
+            </Flex>
+
+            <Flex direction="column" bgColor="gray.300" py="8">
+                <Box maxW="700px" mx="auto" fontSize="xs" textAlign="center">
+                    <VStack spacing="4">
+                        <Text>© Copyright 2021 Portal Inovador.Club</Text>
+                        <Flex>
+                            <HStack textDecoration="underline" fontWeight="bold">
+                                <Link href="/"><a>Política de Privacidade</a></Link>
+                                <Text>|</Text>
+                                <Link href="/"><a>Termos de Uso</a></Link>
+                            </HStack>
+                        </Flex>
+                        <div dangerouslySetInnerHTML={{ __html: RichText.asHtml(adv.footer), }} className="footer" />
+
                     </VStack>
-                </Flex>
+                </Box>
+
+
 
             </Flex>
         </>
@@ -92,6 +120,14 @@ export const getStaticProps = async (context) => {
         description: RichText.asText(response.data.description),
         body: response.data.body,
         votos: response.data.votos,
+        footer: response.data.footer,
+        banner: response.data.banner.map(bannerInfo => {
+            return {
+                bannerImage: bannerInfo.banner_image.url,
+                bannerTitle: bannerInfo.banner_title,
+                bannerLink: bannerInfo.banner_link.url,
+            }
+        })
     }
 
     return {
