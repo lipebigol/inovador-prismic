@@ -71,9 +71,9 @@ export default function Adv({ adv }) {
                         <Text>© Copyright 2021 Portal Inovador.Club</Text>
                         <Flex>
                             <HStack textDecoration="underline" fontWeight="bold">
-                                <Link href="/"><a>Política de Privacidade</a></Link>
+                                <Link href="/politica-de-privacidade"><a>Política de Privacidade</a></Link>
                                 <Text>|</Text>
-                                <Link href="/"><a>Termos de Uso</a></Link>
+                                <Link href="/termos-de-uso"><a>Termos de Uso</a></Link>
                             </HStack>
                         </Flex>
                         <div dangerouslySetInnerHTML={{ __html: RichText.asHtml(adv.footer), }} className="footer" />
