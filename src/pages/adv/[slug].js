@@ -17,9 +17,9 @@ export default function Adv({ adv }) {
             </Head>
             <Flex direction="column" maxW="700px" mx="auto" my="6" px={[4, 4, 0]} >
                 <VStack align="stretch" spacing="2">
-                    <Text fontSize="sm" letterSpacing="widest" align="center">ADVERTORIAL</Text>
+                    <Text fontSize="sm" letterSpacing="widest" align="center" color="gray.400">ADVERTORIAL</Text>
                     <Heading>{adv.title}</Heading>
-                    <Text pb="4" borderBottom="1px" borderColor="gray.300" fontSize="18">{adv.description}</Text>
+                    <Text pb="4" borderBottom="1px" borderColor="gray.300" fontSize="18" color="gray.500">{adv.description}</Text>
                     <Flex align="center">
                         <Icon as={FaStar} color="yellow.400" />
                         <Icon as={FaStar} color="yellow.400" />
