@@ -65,7 +65,7 @@ export default function Adv({ adv }) {
 
             </Flex>
 
-            <Flex direction="column" bgColor="gray.300" py="8" >
+            <Flex direction="column" bgColor="gray.300" py="8" px="4" >
                 <Box maxW="700px" mx="auto" fontSize="xs" textAlign="center">
                     <VStack spacing="4">
                         <Text>© Copyright 2021 Portal Inovador.Club</Text>
