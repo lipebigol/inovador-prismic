@@ -38,7 +38,7 @@ export default function Adv({ adv }) {
                 </Flex>
 
                 {adv.banner.map(bannerInfo => (
-                    <Link href={bannerInfo.bannerLink} >
+                    <Link href={bannerInfo.bannerLink} key={bannerInfo.bannerTitle}>
                         <a>
 
                             <Flex p={["4", "6"]} bgColor="gray.200" align="center" direction="column" mt="8">
