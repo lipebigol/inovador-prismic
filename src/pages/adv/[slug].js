@@ -32,40 +32,20 @@ export default function Adv({ adv }) {
 
                 </VStack>
 
-                <Flex py="1" px="2" bgColor="green.100" align="center" border="1px" borderStyle="dotted" mt="6" >
-                    <Icon as={AiFillCheckCircle} color="green.400" w={5} h={5} />
-                    <Text fontSize="sm" ml="4">Atualização: <Text as="b" color="red.500">Descontos de até 60% ainda disponíveis.</Text> Promoção válida enquanto durarem as unidades que os fabricantes reservaram para a nossa matéria.</Text>
-                </Flex>
-
-                {adv.banner.map(bannerInfo => (
-                    <Link href={bannerInfo.bannerLink} key={bannerInfo.bannerTitle}>
+                {adv.button.map(buttonInfo => (
+                    <Link href={buttonInfo.buttonLink} key={buttonInfo.buttonText}>
                         <a>
 
-                            <Flex p={["4", "6"]} bgColor="gray.200" align="center" direction="column" mt="8">
-                                <VStack spacing="6">
+                            <Box bgGradient="linear(to-t, #008c00, #4ba614,)" w="100%" p="3" mt="6" mb="12" borderRadius="md" border="1px" borderColor="#34740e" color="white" fontSize="26px" fontWeight="bold" textAlign="center" _hover={{ bg: "#008c00" }}>{buttonInfo.buttonText}</Box>
 
-                                    <Heading fontSize={["lg", "xl", "2xl"]} ml="4" textAlign="center">{bannerInfo.bannerTitle}</Heading>
-                                    <Text fontSize="lg" textColor="red.500" as="b">Oportunidade válida.</Text>
-                                    <Image
-                                        boxSize="100%"
-                                        objectFit="contain"
-                                        src={bannerInfo.bannerImage}
-                                    />
-                                    <Text fontSize={["sm", "md"]}>Atenção: Restam poucas Unidades! Tenha vantagem com o nosso link exclusivo e ganhe até 60% de desconto e parcelamento em até 12x clicando no botão abaixo:</Text>
-                                    <Image
-                                        objectFit="contain"
-                                        src="/botao.png"
-                                    />
-
-                                </VStack>
-                            </Flex>
                         </a>
                     </Link>
+
                 ))}
 
             </Flex>
 
-            <Flex direction="column" bgColor="gray.300" py="8" px="4" >
+            <Flex direction="column" bgColor="gray.600" py="8" px="4" color="white" >
                 <Box maxW="700px" mx="auto" fontSize="xs" textAlign="center">
                     <VStack spacing="4">
                         <Text>© Copyright 2021 Portal Inovador.Club</Text>
@@ -121,11 +101,17 @@ export const getStaticProps = async (context) => {
         body: response.data.body,
         votos: response.data.votos,
         footer: response.data.footer,
-        banner: response.data.banner.map(bannerInfo => {
+        // banner: response.data.banner.map(bannerInfo => {
+        //     return {
+        //         bannerImage: bannerInfo.banner_image.url,
+        //         bannerTitle: bannerInfo.banner_title,
+        //         bannerLink: bannerInfo.banner_link.url,
+        //     }
+        // }),
+        button: response.data.button.map(buttonInfo => {
             return {
-                bannerImage: bannerInfo.banner_image.url,
-                bannerTitle: bannerInfo.banner_title,
-                bannerLink: bannerInfo.banner_link.url,
+                buttonText: buttonInfo.button_text,
+                buttonLink: buttonInfo.button_link.url,
             }
         })
     }

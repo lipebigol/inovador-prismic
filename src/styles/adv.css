@@ -30,7 +30,15 @@
 }
 
 .body-content ul {
-    padding: .4rem 0;
+    padding: 8px;
+    border: 2px;
+    border-style: dashed;
+    border-color: red;
+    background: #fafad2;
+    margin: 1.2rem 0;
+    list-style: none;
+    font-size: 18px;
+      
 }
 
 .body-content ol {
@@ -44,3 +52,4 @@
 .footer p {
     padding: .4rem 0;
 }
+
